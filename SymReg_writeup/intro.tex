@@ -1,0 +1,23 @@
+
+
+\section{Introduction}
+\label{sec:intro}
+
+
+
+Genetic programming is a useful artificial intelligence problem because it enables computers to automatically find the most optimal solution to a problem using the evolutionary idea of natural selection and survival of the fittest.
+In this problem, we create a computer program to determine a mystery
+function by using symbolic regression. To do this, we use genetic programming
+to search for the best function that matches the mystery function. We assign each individual a fitness value and use that to 
+determine which individuals survive for the next generation. 
+To weed out weak individual functions and improve the optimality of each subsequent generation, we probabilistically select fit individuals to participate in three methods to produce the next generation: reproduction, crossover, and mutation.  \\
+
+We use methods such
+as reproduction, crossover and mutation to improve the fittest functions, as described by John Koza \cite{genetic programming}. Although we use LEAST SQUARES?? to determine each individual's fitness value, other literature suggests that combining this method with linear scaling can produce better results \cite{linearscaling}. In future work, we would include this method in our experiments ad see how the output compares to our original results. Another issue that could hinder our results is premature convergence, in which the computer may cease searching for a solution before the optimal solution is determined. James Edward Baker suggests the use of adaptive selection methods such as a fixed selection algorithm or hybrid systems to prevent this problem \cite{selectionmethods}. 
+
+We are still working on our results, which will be briefly summarized in this section. 
+
+In the following sections, we discuss the background of this problem, our experiment, and our results. 
+
+
+

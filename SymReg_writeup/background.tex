@@ -1,0 +1,11 @@
+
+\section{Background}
+\label{sec:background}
+
+
+
+We later describe how we execute the reproduction, mutation, and crossover methods to produce generations, but we use a method from Brad Miller and David Goldberg \cite{tournamentselection} called tournament selection to select individuals. In this method, we choose a sample of the population and select the winner to be the individual with the best fitness value. We insert this individual into a "mating pool" of other tournament winners. Since the average fitness value of the mating pool is better than that of the general population of individuals, we can use this difference to calculate the selection pressure, i.e. the amount that fitter individuals are preferred. Once a random subset of the population is chosen, we cycle through the sampled individuals looking for the one with the best fitness score (least error) and select that individual for crossover. This ensures that subsequent generations have better average fitness values and that more fit functions have a better chance at being chosen then lesser functions. The idea behind tournament selection is that trees with worse fitness scores will always be weeded out through the tournament process, resulting in stronger parents being chosen for crossover.
+
+
+
+

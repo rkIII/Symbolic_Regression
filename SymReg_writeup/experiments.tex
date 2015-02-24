@@ -1,0 +1,25 @@
+
+\section{Experiments}
+\label{sec:expts}
+
+\textbf{Experiment 1}
+To find a mystery function using genetic programming, we first generate an initial population of possible functions. To do this, we randomly
+create functions expressed by the arithmetic operators +, -, *, /, positive integer powers of x, and
+integer constants. We choose an initial population size of 300 individuals and a maximum depth of 10 for each individual tree. We choose these parameters because they are large enough for us to get a large variety of possible functions while maintaining a certain degree of randomness, but small enough to run quickly and prevent memory issues. We only use integers from -5 to 5 for the same reasons. To prevent the possibility of functions calculating negative exponents, we take the absolute value of each integer power of x. When creating the initial population, each operator has an equal chance at being chosen for each equation. Thus, we have a wide variety of different functions. \\
+
+Second, we give each function a fitness value to determine how closely its value matches the mystery function's value. In our case, the fitness value for an individual is its residual error compared to the actual dataset. It follows that individuals would prefer to have lower fitness scores (i.e., for us lower fitness scores are better). For each individual, we evaluate the function value for a given x, and subtract this from the mystery function value of x. Then, we take the absolute value of the difference to find the error. For the purposes of this experiment, we were able to work with lower fitness values being better thanks to the tournament selection algorithm. We use the fitness value to determine the fittest individuals and choose individuals for crossover, mutation, and reproduction using tournament selection. Our regression runs for a set number of generations\\
+
+Next, we select individuals for reproduction, mutation, and crossover. We decide on a 1 percent reproduction rate and 10 percent mutation rate. We arbitrarily chose the 1 percent reproduction rate, and converged on the 10 percent mutation rate as a way to ensure a higher level of diversity amongst our generations. For reproduction, we pick the fittest 1 percent of the population and clone them into our next generation. Rather than simply selecting the fittest individuals for mutation and crossover, we select individuals proportionately to their fitness values using tournament selection, as described previously. This prevents possible diversity issues from arising because although fitter individuals are more likely to be chosen, less-fitter individuals also have a chance at being chosen. The first operation to be executed is reproduction. The next operation is mutation. We select 10 percent of the population using tournament selection and then randomly choose a node in each tree to mutate. We choose to mutate terminals with terminals and operators with operators to maintain some structure. If the mutation causes and mathematical inconsistencies (i.e., negative exponent, divide by 0, raising something to the x power directly) we adjust for those situations and mend the tree. Finally, we execute the crossover operation. In this method, we select two individuals and randomly choose either the right or left subtrees in each individual. Then, we swap the trees at these points in the two trees we selected.  By selecting subtrees in this way we maintain some stable structure throughout the process.\\
+
+After executing these operations a number of times, the trees get fitter and the fitness values get closer to zero, so we get closer to finding the mystery function with each generation. We choose to operate over 30 generations. We felt that this number gave us a good chance of convergence but avoided overfitting.\\
+
+\textbf{Experiment 2}
+We are also tasked with performing symbolic regression on a file of 100,000 data points with measured values of three x-values. Although we are unable to produce cohesive results, we explain how we would like to execute this regression. We continue to use the same parameters as in the first regression. However, to prevent overfitting, we separate the data file into a test file with 20,000 data points and a training file with 80,000 points. Next, we calculate the fitness values of the individuals in the training set and determine the 10 fittest individuals. We then use these individuals with the data from the test set to find the optimal solution by performing the evolution method on a population of those 10 fittest trees. 
+
+For the experiment with vector functions of 3 variables, we choose to keep our reproduction, mutation, and crossover functions the same as in the first experiment. We also maintained the same population size, terminal range, and number of generations. We change the maximum depth of the tree to 5 and make all randomly generated new trees in the initialization process to be of this length. This makes the process of evaluating and parsing trees easier and ensures a variety of the three variables ($x_1, x_2, x_3$) appear in the functions.
+
+
+
+
+
+
